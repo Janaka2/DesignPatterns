@@ -1,9 +1,9 @@
 package example;
 
-import org.example.structural.chain_of_responsibility.Handler;
-import org.example.structural.chain_of_responsibility.HandlerA;
-import org.example.structural.chain_of_responsibility.HandlerB;
-import org.example.structural.chain_of_responsibility.HandlerC;
+import org.example.behavioral.chain_of_responsibility.Handler;
+import org.example.behavioral.chain_of_responsibility.HandlerA;
+import org.example.behavioral.chain_of_responsibility.HandlerB;
+import org.example.behavioral.chain_of_responsibility.HandlerC;
 import org.junit.jupiter.api.Test;
 import static org.junit.jupiter.api.Assertions.*;
 

@@ -1,10 +1,10 @@
-package org.example.structural.chain_of_responsibility;
+package org.example.behavioral.chain_of_responsibility;
 
-public class HandlerC extends Handler {
+public class HandlerA extends Handler {
     @Override
     public String handleRequest(int value) {
-        if (value >= 20) {
-            return "Handler C";
+        if (value>0 && value < 10) {
+            return "Handler A";
         } else if (successor != null) {
             return successor.handleRequest(value);
         }

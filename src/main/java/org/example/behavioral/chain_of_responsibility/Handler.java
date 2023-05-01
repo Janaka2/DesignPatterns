@@ -1,4 +1,4 @@
-package org.example.structural.chain_of_responsibility;
+package org.example.behavioral.chain_of_responsibility;
 
 public abstract class Handler {
     protected Handler successor;
