@@ -1,3 +1,4 @@
+[![Java CI with Maven](https://github.com/Janaka2/DesignPatterns/actions/workflows/maven.yml/badge.svg)](https://github.com/Janaka2/DesignPatterns/actions/workflows/maven.yml)
 # Java Design Patterns
 
 This repository contains examples of Java design patterns along with their unit tests, categorized into Creational, Structural, and Behavioral patterns.
