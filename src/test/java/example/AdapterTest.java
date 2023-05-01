@@ -1,6 +1,6 @@
 package example;
 
-import org.example.adapter.AudioPlayer;
+import org.example.structural.adapter.AudioPlayer;
 import org.junit.jupiter.api.Test;
 import static org.junit.jupiter.api.Assertions.*;
 

@@ -1,10 +1,10 @@
 package example;
 
-import org.example.factory.Circle;
-import org.example.factory.Square;
-import org.example.factory.Rectangle;
-import org.example.factory.Shape;
-import org.example.factory.ShapeFactory;
+import org.example.creational.factory.Circle;
+import org.example.creational.factory.Square;
+import org.example.creational.factory.Rectangle;
+import org.example.creational.factory.Shape;
+import org.example.creational.factory.ShapeFactory;
 import org.junit.jupiter.api.Test;
 import static org.junit.jupiter.api.Assertions.*;
 

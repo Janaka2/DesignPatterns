@@ -1,7 +1,7 @@
 package example;
 
-import org.example.prototype.Shape;
-import org.example.prototype.ShapeCache;
+import org.example.creational.prototype.Shape;
+import org.example.creational.prototype.ShapeCache;
 import org.junit.jupiter.api.Test;
 import static org.junit.jupiter.api.Assertions.*;
 

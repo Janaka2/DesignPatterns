@@ -1,8 +1,11 @@
 package example;
 
-import org.example.abstractfactory.*;
+
+import org.example.creational.abstractfactory.*;
 import org.junit.jupiter.api.Test;
-import static org.junit.jupiter.api.Assertions.*;
+
+import static org.junit.jupiter.api.Assertions.assertNotNull;
+import static org.junit.jupiter.api.Assertions.assertTrue;
 
 public class AbstractFactoryTest {
 

@@ -1,6 +1,6 @@
 package example;
 
-import org.example.singalton.Singleton;
+import org.example.creational.singalton.Singleton;
 import org.junit.jupiter.api.Test;
 import static org.junit.jupiter.api.Assertions.*;
 

@@ -1,6 +1,6 @@
 package example;
 
-import org.example.builder.CheeseBurger;
+import org.example.creational.builder.CheeseBurger;
 import org.junit.jupiter.api.Test;
 import static org.junit.jupiter.api.Assertions.*;
 
