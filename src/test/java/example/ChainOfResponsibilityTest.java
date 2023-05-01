@@ -18,8 +18,8 @@ public class ChainOfResponsibilityTest {
         handlerB.setSuccessor(handlerC);
 
         assertEquals("Handler A", handlerA.handleRequest(5));
-        assertEquals("Handler B", handlerB.handleRequest(15));
-        assertEquals("Handler C", handlerC.handleRequest(25));
-        assertNull(handlerC.handleRequest(-5));
+        assertEquals("Handler B", handlerA.handleRequest(15));
+        assertEquals("Handler C", handlerA.handleRequest(25));
+        assertNull(handlerA.handleRequest(-5));
     }
 }
