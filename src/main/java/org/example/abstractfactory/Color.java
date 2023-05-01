@@ -1,2 +1,5 @@
-package org.example.abstractfactory;public class Color {
+package org.example.abstractfactory;
+
+public interface Color {
+    void fill();
 }

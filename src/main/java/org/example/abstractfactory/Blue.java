@@ -1,2 +1,9 @@
-package org.example.abstractfactory;public class Blue {
+package org.example.abstractfactory;
+
+public class Blue implements Color {
+
+    @Override
+    public void fill() {
+        System.out.println("Inside Blue::fill() method.");
+    }
 }

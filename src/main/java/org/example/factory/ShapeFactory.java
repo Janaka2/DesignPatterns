@@ -1,22 +1,6 @@
-package org.example;
+package org.example.factory;
 
-interface Shape {
-    void draw();
-}
-
-class Circle implements Shape {
-    @Override
-    public void draw() {
-        System.out.println("Drawing a circle");
-    }
-}
-
-class Square implements Shape {
-    @Override
-    public void draw() {
-        System.out.println("Drawing a square");
-    }
-}
+import org.example.factory.Square;
 
 public class ShapeFactory {
     public Shape getShape(String shapeType) {
@@ -24,6 +8,8 @@ public class ShapeFactory {
             return new Circle();
         } else if ("SQUARE".equalsIgnoreCase(shapeType)) {
             return new Square();
+        }else if ("RECTANGLE".equalsIgnoreCase(shapeType)) {
+            return new Rectangle();
         }
         return null;
     }

@@ -1,2 +1,6 @@
-package org.example.adapter;public interface AdvancedMediaPlayer {
+package org.example.adapter;
+
+public interface AdvancedMediaPlayer {
+    void playVlc(String fileName);
+    void playMp4(String fileName);
 }

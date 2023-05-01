@@ -1,2 +1,5 @@
-package org.example.abstractfactory;public class Shape {
+package org.example.abstractfactory;
+
+public interface Shape {
+    void draw();
 }

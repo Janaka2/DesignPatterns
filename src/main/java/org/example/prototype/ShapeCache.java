@@ -3,7 +3,7 @@ package org.example.prototype;
 import java.util.HashMap;
 import java.util.Map;
 
-class ShapeCache {
+public class ShapeCache {
     private static Map<String, Shape> shapeMap = new HashMap<>();
 
     public static Shape getShape(String shapeId) {
