@@ -1,22 +1,31 @@
 package org.example.behavioral.observer;
 
-import java.util.ArrayList;
 import java.util.List;
+import java.util.Objects;
+import java.util.concurrent.CopyOnWriteArrayList;
 
-public class Subject {
-    private List<Observer> observers = new ArrayList<>();
+public final class Subject {
+    private final List<Observer> observers = new CopyOnWriteArrayList<>();
 
     public void addObserver(Observer observer) {
-        observers.add(observer);
+        Observer validated = Objects.requireNonNull(observer, "observer must not be null");
+        if (!observers.contains(validated)) {
+            observers.add(validated);
+        }
     }
 
     public void removeObserver(Observer observer) {
-        observers.remove(observer);
+        observers.remove(Objects.requireNonNull(observer, "observer must not be null"));
+    }
+
+    public int observerCount() {
+        return observers.size();
     }
 
     public void notifyObservers(String message) {
+        String validatedMessage = Objects.requireNonNull(message, "message must not be null");
         for (Observer observer : observers) {
-            observer.update(message);
+            observer.update(validatedMessage);
         }
     }
 }

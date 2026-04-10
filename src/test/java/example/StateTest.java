@@ -1,24 +1,23 @@
 package example;
 
-
 import org.example.behavioral.state.ConcreteStateA;
 import org.example.behavioral.state.ConcreteStateB;
 import org.example.behavioral.state.Context;
 import org.example.behavioral.state.State;
 import org.junit.jupiter.api.Test;
 
-import static org.junit.jupiter.api.Assertions.assertTrue;
+import static org.junit.jupiter.api.Assertions.assertSame;
 
 public class StateTest {
     @Test
     public void testStatePattern() {
-        State initialState = new ConcreteStateA();
+        State initialState = ConcreteStateA.INSTANCE;
         Context context = new Context(initialState);
 
         context.request();
-        assertTrue(context.getState() instanceof ConcreteStateB);
+        assertSame(ConcreteStateB.INSTANCE, context.getState());
 
         context.request();
-        assertTrue(context.getState() instanceof ConcreteStateA);
+        assertSame(ConcreteStateA.INSTANCE, context.getState());
     }
 }

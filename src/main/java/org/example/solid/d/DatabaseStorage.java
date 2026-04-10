@@ -1,9 +1,19 @@
 package org.example.solid.d;
 
-public class DatabaseStorage implements Storage {
+import java.util.ArrayList;
+import java.util.Collections;
+import java.util.List;
+import java.util.Objects;
+
+public final class DatabaseStorage implements Storage {
+    private final List<String> savedRecords = new ArrayList<>();
+
     @Override
     public void save(String data) {
-        // Save data to a database
-        System.out.println("Data saved to the database: " + data);
+        savedRecords.add(Objects.requireNonNull(data, "data must not be null"));
+    }
+
+    public List<String> getSavedRecords() {
+        return Collections.unmodifiableList(savedRecords);
     }
 }

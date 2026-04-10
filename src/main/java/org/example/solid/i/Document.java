@@ -1,17 +1,15 @@
 package org.example.solid.i;
 
-public class Document {
-    private String content;
+import java.util.Objects;
+
+public final class Document {
+    private final String content;
 
     public Document(String content) {
-        this.content = content;
+        this.content = Objects.requireNonNull(content, "content must not be null");
     }
 
     public String getContent() {
         return content;
-    }
-
-    public void setContent(String content) {
-        this.content = content;
     }
 }
