@@ -9,6 +9,8 @@ This project is intentionally optimized for learning-by-reading and learning-by-
 - each topic is validated by JUnit tests,
 - package structure mirrors conceptual categories.
 
+Phase tracking: see [Phase 1 — Production-ready reference baseline](docs/phase-1-production-readiness.md).
+
 ---
 
 ## What is included
