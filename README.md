@@ -154,6 +154,20 @@ mvn -Dtest=SingletonTest test
 
 ---
 
+## Factory Method modernization plan (Java 21-ready, non-breaking)
+
+Factory Method now supports a migration path from fragile string keys to a type-safe API:
+
+1. **Now (compatible):** keep `ShapeFactory#getShape(String)` for existing tests/consumers.
+2. **Now (preferred):** use `ShapeFactory#createShape(ShapeType)` for new code.
+3. **Now (safer parsing):** use `ShapeType.from(String)` when converting external/user input.
+4. **Transition window:** migrate calling code and tests gradually to `ShapeType`.
+5. **Future major version:** remove the deprecated string-based factory method.
+
+This approach keeps current behavior (including `null` for unsupported legacy string values) while enabling production-oriented, explicit contracts in Java 21 code.
+
+---
+
 ## Package naming standardization plan (`singalton` typo cleanup)
 
 To avoid breaking existing consumers/tests while moving to the corrected package name:
