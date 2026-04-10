@@ -1,17 +1,8 @@
 package org.example.behavioral.interpreter;
 
-public class Plus implements Expression {
-    private Expression left;
-    private Expression right;
-
-    public Plus(Expression left, Expression right) {
-        this.left = left;
-        this.right = right;
-    }
-
+public record Plus(Expression left, Expression right) implements Expression {
     @Override
     public int interpret() {
         return left.interpret() + right.interpret();
     }
 }
-

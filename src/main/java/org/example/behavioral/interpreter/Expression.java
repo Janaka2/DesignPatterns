@@ -1,5 +1,5 @@
 package org.example.behavioral.interpreter;
 
-public interface Expression {
+public sealed interface Expression permits Number, Plus, Minus {
     int interpret();
 }

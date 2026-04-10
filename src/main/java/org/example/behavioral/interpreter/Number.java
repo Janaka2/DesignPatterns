@@ -1,12 +1,6 @@
 package org.example.behavioral.interpreter;
 
-public class Number implements Expression {
-    private int number;
-
-    public Number(int number) {
-        this.number = number;
-    }
-
+public record Number(int number) implements Expression {
     @Override
     public int interpret() {
         return number;
