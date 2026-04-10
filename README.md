@@ -1,8 +1,10 @@
 [![Java CI with Maven](https://github.com/Janaka2/DesignPatterns/actions/workflows/maven.yml/badge.svg)](https://github.com/Janaka2/DesignPatterns/actions/workflows/maven.yml)
 
-# Java Design Patterns & Architecture Playground
+<h1 align="center">Java Design Patterns &amp; Architecture Playground</h1>
 
-A practical Java **design-pattern playbook** for real business engineering decisions.
+<p align="center">
+  <em>A practical Java <strong>design-pattern playbook</strong> for real business engineering decisions.</em>
+</p>
 
 This repository is built to answer one question quickly:
 **"Given this business situation, which pattern should I choose, and why?"**
@@ -11,6 +13,16 @@ It is optimized for learning by reading and by running tests:
 - concise implementations per pattern,
 - JUnit tests that demonstrate behavior,
 - package structure that mirrors design concepts.
+
+## Quick navigation
+
+- [Start here (recommended reading flow)](#start-here-recommended-reading-flow)
+- [Quick pattern-selection playbook](#quick-pattern-selection-playbook)
+- [What is included](#what-is-included)
+- [Phase roadmap](#phase-roadmap)
+- [Pattern index matrix](#pattern-index-matrix)
+- [Documentation UX quick links](#documentation-ux-quick-links)
+- [Project structure](#project-structure)
 
 ## Start here (recommended reading flow)
 
@@ -158,6 +170,11 @@ Package: `src/main/java/org/example/ai`
 
 ## Pattern index matrix
 
+<details>
+<summary><strong>Expand/collapse full matrix</strong></summary>
+
+<br />
+
 | Pattern | Intent | When to use | Trade-offs | Real-world example | Test class |
 |---|---|---|---|---|---|
 | Singleton | Ensure one shared instance | Shared in-memory config/cache objects | Harder testing, hidden global state risk | Application configuration registry | `SingletonTest`, `SingletonModernPackageTest` |
@@ -213,6 +230,8 @@ Package: `src/main/java/org/example/ai`
 | SOLID: DIP | Depend on abstractions, not concretions | Testable, replaceable dependencies | More wiring/DI setup | Storage abstraction in services | `DependencyInversionTest` |
 
 ---
+
+</details>
 
 
 ## Documentation UX quick links
