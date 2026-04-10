@@ -9,7 +9,9 @@ This project is intentionally optimized for learning-by-reading and learning-by-
 - each topic is validated by JUnit tests,
 - package structure mirrors conceptual categories.
 
-Phase tracking: see [Phase 1 — Production-ready reference baseline](docs/phase-1-production-readiness.md).
+Phase tracking:
+- [Phase 1 — Production-ready reference baseline](docs/phase-1-production-readiness.md)
+- [Phase 2 — Expand from GoF to enterprise patterns](docs/phase-2-enterprise-patterns.md)
 
 ---
 
@@ -68,6 +70,35 @@ Packages under `src/main/java/org/example`
 - **Fluent API Pattern** (`fluent_api_pattern`)
 - **Reactive Processing** (`reactive`)
 
+### 6) Enterprise integration patterns
+Package: `src/main/java/org/example/enterprise/resilience`
+
+- **Retry**
+- **Circuit Breaker**
+- **Bulkhead**
+- **Timeout**
+- **Rate Limiter**
+- **Idempotency Key**
+- **Dead Letter Queue**
+- **Backoff Strategy** (exponential)
+
+### 7) Data consistency patterns
+Package: `src/main/java/org/example/data_consistency`
+
+- **Transactional Outbox**
+- **Saga** (orchestration + choreography)
+- **Unit of Work**
+- **Repository**
+- **Specification**
+
+### 8) Architecture patterns
+Package: `src/main/java/org/example/architecture`
+
+- **Hexagonal Architecture** (`hexagonal`)
+- **Clean Architecture** (`clean`)
+- **Strangler Fig migration sample** (`strangler`)
+- **Anti-Corruption Layer** (`acl`)
+
 ---
 
 ## Pattern index matrix
@@ -102,6 +133,24 @@ Packages under `src/main/java/org/example`
 | Immutable Object | Prevent mutation after construction | Thread-safe value objects | Requires copy-on-change approach | Money/date/value objects | `ImmutablePatternTest` |
 | Fluent API | Improve readability with chained calls | Builder-like DSL and query APIs | Can hide invalid states if not designed well | Query/build DSLs | `FluentApiPatternTest` |
 | Reactive Processing | Async stream composition | Backpressure-aware pipelines | Steeper learning curve, debugging complexity | Reactive messaging/data pipelines | `ReactiveProcessorTest` |
+| Retry | Retry transiently failing operations | Network hiccups, temporary downstream instability | Can amplify traffic if misconfigured | Retrying idempotent API operations | `ResiliencePatternsTest` |
+| Circuit Breaker | Stop calls to unhealthy dependencies | Repeated dependency failures | Requires tuning thresholds/windows | Protecting service from cascading failures | `ResiliencePatternsTest` |
+| Bulkhead | Isolate resources per dependency/workload | Limit blast radius across components | May reject excess load early | Dedicated thread/semaphore pools | `ResiliencePatternsTest` |
+| Timeout | Bound waiting time for operations | Remote calls and long-running tasks | Aggressive values can fail healthy calls | Failing fast on slow dependencies | `ResiliencePatternsTest` |
+| Rate Limiter | Cap request rate in a time window | API protection and fairness controls | Can drop/throttle burst traffic | Per-client request throttling | `ResiliencePatternsTest` |
+| Idempotency Key | De-duplicate retried requests safely | At-least-once delivery and client retries | Requires key lifecycle/storage policy | Preventing duplicate payment/order creation | `ResiliencePatternsTest` |
+| Dead Letter Queue | Capture failed/unprocessable messages | Async consumers with poison messages | Needs replay/triage workflow | Parking repeatedly failing events | `ResiliencePatternsTest` |
+| Backoff Strategy | Space retries with increasing delay | Reduce pressure on recovering systems | Increased latency for completion | Exponential retry intervals | `ResiliencePatternsTest` |
+| Transactional Outbox | Persist state + integration event atomically | Reliable event publishing from DB-backed services | Requires outbox poller/dispatcher | Publish domain events after commit | `DataConsistencyPatternsTest` |
+| Saga (Orchestration) | Coordinate multi-step distributed transactions centrally | Clear workflow ownership needed | Coordinator can become bottleneck | Order workflow across services | `DataConsistencyPatternsTest` |
+| Saga (Choreography) | Coordinate via events without central coordinator | Loosely coupled domain event flows | Harder end-to-end traceability | Event-driven order fulfillment | `DataConsistencyPatternsTest` |
+| Unit of Work | Group in-memory changes into single commit | Transactional write boundary in app layer | Tracking complexity in large graphs | Commit multiple repository actions together | `DataConsistencyPatternsTest` |
+| Repository | Encapsulate data access behind collection-like interface | Isolate persistence details from domain logic | Over-abstraction risk for simple CRUD | Domain-focused data retrieval | `DataConsistencyPatternsTest` |
+| Specification | Compose reusable query/business predicates | Rich filtering rules reused across use-cases | Can become complex if overused | Eligibility/search rule composition | `DataConsistencyPatternsTest` |
+| Hexagonal Architecture | Isolate domain from infrastructure via ports/adapters | Keep core independent from frameworks | More upfront abstractions | Domain service using payment port | `ArchitecturePatternsTest` |
+| Clean Architecture | Organize by policy vs details with use-case boundaries | Enforce inward dependency direction | Additional boundary/interface boilerplate | Use-case invoking gateway interface | `ArchitecturePatternsTest` |
+| Strangler Fig | Incrementally replace legacy systems route-by-route | Phased migration from monolith/legacy component | Temporary dual-run complexity | Routing migrated customers to new billing | `ArchitecturePatternsTest` |
+| Anti-Corruption Layer | Translate between legacy and new domain models | Prevent legacy model leakage into new core | Mapping overhead/maintenance | Adapter around legacy customer system | `ArchitecturePatternsTest` |
 | SOLID: SRP | One responsibility per class | Keeping modules cohesive | More classes | Service decomposition | `BookTest`, `BookPrinterTest` |
 | SOLID: OCP | Extend behavior without modifying existing code | Plugin/rule additions | Interface/abstraction overhead | Adding new operations safely | `CalculatorTest` |
 | SOLID: LSP | Subtypes must substitute base types safely | Inheritance hierarchies | Requires careful contracts | Shape/domain polymorphism | `ShapeTest` |
@@ -120,6 +169,9 @@ src/
 │   ├── structural/
 │   ├── solid/
 │   ├── command_query_responsibility_segregation/
+│   ├── architecture/
+│   ├── data_consistency/
+│   ├── enterprise/resilience/
 │   ├── event_sourcing_pattern/
 │   ├── fluent_api_pattern/
 │   ├── immutable_pattern/
