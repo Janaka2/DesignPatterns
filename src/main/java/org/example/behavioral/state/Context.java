@@ -1,14 +1,16 @@
 package org.example.behavioral.state;
 
-public class Context {
+import java.util.Objects;
+
+public final class Context {
     private State state;
 
     public Context(State state) {
-        this.state = state;
+        this.state = Objects.requireNonNull(state, "state must not be null");
     }
 
     public void setState(State state) {
-        this.state = state;
+        this.state = Objects.requireNonNull(state, "state must not be null");
     }
 
     public State getState() {

@@ -2,7 +2,9 @@ package example;
 
 import org.example.structural.adapter.AudioPlayer;
 import org.junit.jupiter.api.Test;
-import static org.junit.jupiter.api.Assertions.*;
+
+import static org.junit.jupiter.api.Assertions.assertDoesNotThrow;
+import static org.junit.jupiter.api.Assertions.assertThrows;
 
 public class AdapterTest {
     @Test
@@ -14,5 +16,7 @@ public class AdapterTest {
             audioPlayer.play("mp4", "movie.mp4");
             audioPlayer.play("vlc", "video.vlc");
         });
+
+        assertThrows(IllegalArgumentException.class, () -> audioPlayer.play("avi", "clip.avi"));
     }
 }

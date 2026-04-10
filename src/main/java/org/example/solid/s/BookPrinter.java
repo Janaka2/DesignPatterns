@@ -1,9 +1,22 @@
 package org.example.solid.s;
 
-public class BookPrinter {
+import java.io.PrintStream;
+import java.util.Objects;
+
+public final class BookPrinter {
+    private final PrintStream output;
+
+    public BookPrinter() {
+        this(System.out);
+    }
+
+    public BookPrinter(PrintStream output) {
+        this.output = Objects.requireNonNull(output, "output must not be null");
+    }
+
     public void printBookDetails(Book book) {
-        System.out.println("Title: " + book.getTitle());
-        System.out.println("Author: " + book.getAuthor());
+        Objects.requireNonNull(book, "book must not be null");
+        output.println("Title: " + book.getTitle());
+        output.println("Author: " + book.getAuthor());
     }
 }
-

@@ -10,14 +10,16 @@ public class ObserverTest {
     @Test
     public void testObserverPattern() {
         Subject subject = new Subject();
-        ConcreteObserver observer1 = new ConcreteObserver();
-        ConcreteObserver observer2 = new ConcreteObserver();
+        ConcreteObserver observer1 = new ConcreteObserver("obs-1");
+        ConcreteObserver observer2 = new ConcreteObserver("obs-2");
 
         subject.addObserver(observer1);
         subject.addObserver(observer2);
+        subject.addObserver(observer1);
 
         subject.notifyObservers("Hello!");
 
+        assertEquals(2, subject.observerCount());
         assertEquals("Hello!", observer1.getObserverState());
         assertEquals("Hello!", observer2.getObserverState());
     }

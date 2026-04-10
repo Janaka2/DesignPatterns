@@ -1,12 +1,12 @@
 package org.example.solid.l;
 
-public class Rectangle extends Shape {
-    private double width;
-    private double height;
+public final class Rectangle implements Shape {
+    private final double width;
+    private final double height;
 
     public Rectangle(double width, double height) {
-        this.width = width;
-        this.height = height;
+        this.width = validatePositive(width, "width");
+        this.height = validatePositive(height, "height");
     }
 
     public double getWidth() {
@@ -20,5 +20,12 @@ public class Rectangle extends Shape {
     @Override
     public double area() {
         return width * height;
+    }
+
+    private static double validatePositive(double value, String fieldName) {
+        if (value <= 0) {
+            throw new IllegalArgumentException(fieldName + " must be greater than zero");
+        }
+        return value;
     }
 }
