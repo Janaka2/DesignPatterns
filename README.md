@@ -12,6 +12,7 @@ This project is intentionally optimized for learning-by-reading and learning-by-
 Phase tracking:
 - [Phase 1 — Production-ready reference baseline](docs/phase-1-production-readiness.md)
 - [Phase 2 — Expand from GoF to enterprise patterns](docs/phase-2-enterprise-patterns.md)
+- [Phase 3 — Modern Java implementation variants](docs/phase-3-modern-java-variants.md)
 
 ---
 
@@ -175,7 +176,8 @@ src/
 │   ├── event_sourcing_pattern/
 │   ├── fluent_api_pattern/
 │   ├── immutable_pattern/
-│   └── reactive/
+│   ├── reactive/
+│   └── modern_java/
 └── test/java/example/
     └── *Test.java
 ```
