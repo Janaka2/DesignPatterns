@@ -2,22 +2,44 @@
 
 # Java Design Patterns & Architecture Playground
 
-A practical collection of **design pattern** and **architecture principle** examples in Java, designed to be a reusable reference for day-to-day engineering work.
+A practical Java **design-pattern playbook** for real business engineering decisions.
 
-This project is intentionally optimized for learning-by-reading and learning-by-testing:
-- each topic is implemented in focused classes,
-- each topic is validated by JUnit tests,
-- package structure mirrors conceptual categories.
+This repository is built to answer one question quickly:
+**"Given this business situation, which pattern should I choose, and why?"**
 
-Phase tracking:
-- [Phase 1 — Production-ready reference baseline](docs/phase-1-production-readiness.md)
-- [Phase 2 — Expand from GoF to enterprise patterns](docs/phase-2-enterprise-patterns.md)
-- [Phase 3 — Modern Java implementation variants](docs/phase-3-modern-java-variants.md)
-- [Phase 4 — Cloud-native + observability examples](docs/phase-4-cloud-native-observability.md)
-- [Phase 5 — AI-era additions (high practical value)](docs/phase-5-ai-era-patterns.md)
-- [Phase 6 — Documentation UX for workplace reuse](docs/phase-6-documentation-ux.md)
+It is optimized for learning by reading and by running tests:
+- concise implementations per pattern,
+- JUnit tests that demonstrate behavior,
+- package structure that mirrors design concepts.
 
----
+## Start here (recommended reading flow)
+
+1. **Pattern index matrix** (below)  
+   Scan *intent*, *when to use*, and *trade-offs* to shortlist options.
+2. **Documentation UX guide** (`docs/phase-6-documentation-ux.md`)  
+   Use decision trees and domain-specific guidance for workplace scenarios.
+3. **Concrete implementation package** (`src/main/java/org/example/...`)  
+   Read minimal code examples for your shortlisted patterns.
+4. **Matching tests** (`src/test/java/example/...`)  
+   Run tests to see behavior and usage in executable form.
+5. **Pattern starter template** (`templates/pattern-starter/`)  
+   Copy the structure to implement the chosen pattern in your own project.
+
+## Quick pattern-selection playbook
+
+Use this shortlist when choosing patterns for business problems:
+
+- **Need object creation flexibility?** → `Factory Method`, `Abstract Factory`, `Builder`.
+- **Integrating legacy/vendor systems?** → `Adapter`, `Facade`, `Anti-Corruption Layer`.
+- **Need runtime behavior variation?** → `Strategy`, `State`, `Command`.
+- **Need reliability in distributed systems?** → `Retry`, `Circuit Breaker`, `Bulkhead`, `Timeout`, `Saga`, `Transactional Outbox`.
+- **Need scalable architecture boundaries?** → `Hexagonal`, `Clean Architecture`, `Strangler Fig`.
+- **Need event-heavy or audit-heavy workflows?** → `Observer`, `CQRS`, `Event Sourcing`.
+
+Then validate your choice with three checks:
+1. **Fit**: does it solve the core business constraint?
+2. **Cost**: are added abstractions/operational overhead acceptable?
+3. **Evolvability**: will it remain useful as the domain grows?
 
 ## What is included
 
@@ -120,6 +142,17 @@ Package: `src/main/java/org/example/ai`
 - **Fallback model strategy**
 - **Policy & safety wrappers** (input validation, output filtering, PII masking)
 - **Evaluation harness** (golden set + statistical scoring)
+
+---
+
+## Phase roadmap
+
+- [Phase 1 — Production-ready reference baseline](docs/phase-1-production-readiness.md)
+- [Phase 2 — Expand from GoF to enterprise patterns](docs/phase-2-enterprise-patterns.md)
+- [Phase 3 — Modern Java implementation variants](docs/phase-3-modern-java-variants.md)
+- [Phase 4 — Cloud-native + observability examples](docs/phase-4-cloud-native-observability.md)
+- [Phase 5 — AI-era additions (high practical value)](docs/phase-5-ai-era-patterns.md)
+- [Phase 6 — Documentation UX for workplace reuse](docs/phase-6-documentation-ux.md)
 
 ---
 
