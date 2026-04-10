@@ -13,6 +13,7 @@ Phase tracking:
 - [Phase 1 — Production-ready reference baseline](docs/phase-1-production-readiness.md)
 - [Phase 2 — Expand from GoF to enterprise patterns](docs/phase-2-enterprise-patterns.md)
 - [Phase 3 — Modern Java implementation variants](docs/phase-3-modern-java-variants.md)
+- [Phase 4 — Cloud-native + observability examples](docs/phase-4-cloud-native-observability.md)
 
 ---
 
@@ -99,6 +100,14 @@ Package: `src/main/java/org/example/architecture`
 - **Clean Architecture** (`clean`)
 - **Strangler Fig migration sample** (`strangler`)
 - **Anti-Corruption Layer** (`acl`)
+
+### 9) Cloud-native + observability examples
+Package: `src/main/java/org/example/cloudnative/observability`
+
+- **Command latency tracing** (OpenTelemetry spans + latency histogram)
+- **Circuit breaker metrics** (success/failure/rejection counters)
+- **Saga correlation IDs** (trace attributes and correlated execution)
+- **Resilience fault-injection scenarios** (Testcontainers + WireMock)
 
 ---
 
