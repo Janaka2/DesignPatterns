@@ -2,11 +2,11 @@
 
 # Java Design Patterns & Architecture Playground
 
-A clean, practical collection of **design pattern** and **architecture principle** examples in Java.
+A practical collection of **design pattern** and **architecture principle** examples in Java, designed to be a reusable reference for day-to-day engineering work.
 
-This project is designed for learning-by-reading and learning-by-testing:
-- each topic is implemented in small, focused classes,
-- each topic is covered by JUnit tests,
+This project is intentionally optimized for learning-by-reading and learning-by-testing:
+- each topic is implemented in focused classes,
+- each topic is validated by JUnit tests,
 - package structure mirrors conceptual categories.
 
 ---
@@ -16,7 +16,7 @@ This project is designed for learning-by-reading and learning-by-testing:
 ### 1) Creational patterns
 Package: `src/main/java/org/example/creational`
 
-- **Singleton** (`singalton` package name in current codebase)
+- **Singleton** (`singalton` legacy package retained for compatibility)
 - **Factory Method**
 - **Abstract Factory**
 - **Builder**
@@ -68,6 +68,46 @@ Packages under `src/main/java/org/example`
 
 ---
 
+## Pattern index matrix
+
+| Pattern | Intent | When to use | Trade-offs | Real-world example | Test class |
+|---|---|---|---|---|---|
+| Singleton | Ensure one shared instance | Shared in-memory config/cache objects | Harder testing, hidden global state risk | Application configuration registry | `SingletonTest`, `SingletonModernPackageTest` |
+| Factory Method | Create objects behind interface | Runtime selection of implementation | Extra abstraction layer | Pluggable exporter/parser creation | `FactoryMethodTest` |
+| Abstract Factory | Produce related object families | Multiple UI/platform or region-specific families | More classes/interfaces | Cross-platform UI toolkit | `AbstractFactoryTest` |
+| Builder | Step-by-step object construction | Complex object setup with optional fields | Verbose for small objects | HTTP client/request builders | `BuilderTest` |
+| Prototype | Clone preconfigured instances | Many similar object instances | Clone correctness complexity | Template documents/shapes | `PrototypeTest` |
+| Adapter | Bridge incompatible APIs | Integrating legacy or third-party API | Extra conversion/indirection | Wrapping vendor SDK to app contract | `AdapterTest` |
+| Bridge | Decouple abstraction & implementation | Multiple orthogonal variation dimensions | More initial design effort | Theme + platform rendering split | `BridgeTest` |
+| Composite | Treat part-whole uniformly | Tree structures (UI, file systems) | Harder to constrain child types | DOM/file hierarchy | `CompositeTest`, `ShapeTest` |
+| Decorator | Add behavior dynamically | Cross-cutting features around components | Deep wrapper chains can reduce clarity | Stream wrappers, middleware chain | `DecoratorTest` |
+| Facade | Simplify subsystem usage | Expose simple API over complex internals | Can become god-object if overgrown | Payment/booking orchestration façade | `FacadeTest` |
+| Flyweight | Share intrinsic state | Large numbers of similar lightweight objects | Requires careful state separation | Glyph rendering pools | `FlyweightTest` |
+| Proxy | Control access/lifecycle remotely | Lazy loading, access control, remote calls | Additional latency/complexity | JPA lazy proxies, API client proxy | `ProxyTest` |
+| Chain of Responsibility | Pass request through handlers | Rule pipelines, policy chains | Execution flow less explicit | Auth/validation filters | `ChainOfResponsibilityTest` |
+| Command | Encapsulate requests as objects | Queueing, retries, undo/redo | Command class proliferation | Job queue and UI actions | `CommandTest` |
+| Interpreter | Evaluate language/expressions | Small DSLs and rule expressions | Doesn’t scale for complex grammar | Alert/query expression engine | `InterpreterTest`, `InterpreterTest2` |
+| Iterator | Traverse collection without exposing internals | Custom data structure traversal | Usually unnecessary for simple lists | Cursor over custom aggregate | `IteratorTest` |
+| Mediator | Centralize interactions | Many-to-many object communication | Mediator can grow too complex | Chat room/event bus coordination | `MediatorTest` |
+| Memento | Capture and restore state snapshots | Undo/history features | Memory overhead for snapshots | Document editor undo stack | `MementoTest` |
+| Observer | Publish/subscribe notifications | Event-driven in-process updates | Ordering and lifecycle complexity | Domain events, UI listeners | `ObserverTest` |
+| State | Change behavior by internal state | Workflow and lifecycle transitions | Many state classes | Order/payment status machine | `StateTest` |
+| Strategy | Swap algorithms at runtime | Different pricing/calculation policies | Client must choose strategy | Pricing, routing, ranking policies | `StrategyTest`, `CalculatorTest` |
+| Template Method | Fixed algorithm skeleton with variable steps | Shared workflow with custom steps | Inheritance coupling | Data import pipelines | `TemplateMethodTest` |
+| Visitor | Add operations without changing element classes | Stable structure, frequently changing operations | Hard to evolve element hierarchy | AST transformations | `VisitorTest` |
+| CQRS | Separate write/read models | High-read workloads and audit-friendly systems | Operational complexity and eventual consistency | E-commerce order command/read paths | `CQRSTest` |
+| Event Sourcing | Persist state as event sequence | Auditability and temporal debugging | Replay complexity, schema evolution | Ledger-like domain events | `EventSourcingPatternTest` |
+| Immutable Object | Prevent mutation after construction | Thread-safe value objects | Requires copy-on-change approach | Money/date/value objects | `ImmutablePatternTest` |
+| Fluent API | Improve readability with chained calls | Builder-like DSL and query APIs | Can hide invalid states if not designed well | Query/build DSLs | `FluentApiPatternTest` |
+| Reactive Processing | Async stream composition | Backpressure-aware pipelines | Steeper learning curve, debugging complexity | Reactive messaging/data pipelines | `ReactiveProcessorTest` |
+| SOLID: SRP | One responsibility per class | Keeping modules cohesive | More classes | Service decomposition | `BookTest`, `BookPrinterTest` |
+| SOLID: OCP | Extend behavior without modifying existing code | Plugin/rule additions | Interface/abstraction overhead | Adding new operations safely | `CalculatorTest` |
+| SOLID: LSP | Subtypes must substitute base types safely | Inheritance hierarchies | Requires careful contracts | Shape/domain polymorphism | `ShapeTest` |
+| SOLID: ISP | Split large interfaces into focused ones | Different clients need different capabilities | More interfaces | Printer/scanner capability split | `MultiFunctionPrinterTest` |
+| SOLID: DIP | Depend on abstractions, not concretions | Testable, replaceable dependencies | More wiring/DI setup | Storage abstraction in services | `DependencyInversionTest` |
+
+---
+
 ## Project structure
 
 ```text
@@ -100,6 +140,12 @@ src/
 mvn test
 ```
 
+### Run quality gates (style, bug detection, coverage, tests)
+
+```bash
+mvn verify
+```
+
 ### Run a single test class
 
 ```bash
@@ -108,22 +154,75 @@ mvn -Dtest=SingletonTest test
 
 ---
 
-## Learning path (suggested)
+## Package naming standardization plan (`singalton` typo cleanup)
 
-If you are new to patterns, a practical order is:
+To avoid breaking existing consumers/tests while moving to the corrected package name:
+
+1. **Now (compatible):** keep `org.example.creational.singalton.Singleton` and mark it deprecated.
+2. **Now (preferred):** introduce `org.example.creational.singleton.Singleton` for all new usage.
+3. **Transition window:** update tests/imports/docs gradually to `singleton` package.
+4. **Future major version:** remove `singalton` package.
+
+---
+
+## Build troubleshooting (enterprise/proxy environments)
+
+If Maven fails to download plugins/dependencies (403, timeout, or transfer failed), use one of these fixes.
+
+### 1) Configure proxy in `~/.m2/settings.xml`
+
+```xml
+<settings>
+  <proxies>
+    <proxy>
+      <id>corp-proxy</id>
+      <active>true</active>
+      <protocol>http</protocol>
+      <host>proxy.company.local</host>
+      <port>8080</port>
+      <nonProxyHosts>localhost|127.*|*.company.local</nonProxyHosts>
+    </proxy>
+  </proxies>
+</settings>
+```
+
+### 2) Use company mirror (recommended)
+
+```xml
+<settings>
+  <mirrors>
+    <mirror>
+      <id>company-mirror</id>
+      <name>Company Maven Mirror</name>
+      <url>https://artifactory.company.local/maven-public</url>
+      <mirrorOf>*</mirrorOf>
+    </mirror>
+  </mirrors>
+</settings>
+```
+
+### 3) Diagnose effective config
+
+```bash
+mvn -X help:effective-settings
+```
+
+### 4) Typical failure causes
+
+- Proxy allows browser traffic but blocks Maven `CONNECT` tunnels.
+- Missing TLS/intercept certificate in JDK trust store.
+- Mirror URL requires credentials or has permission restrictions.
+- Corporate firewall blocks `repo.maven.apache.org` directly.
+
+---
+
+## Learning path (suggested)
 
 1. Singleton, Factory Method, Builder
 2. Adapter, Decorator, Facade
 3. Strategy, Observer, Command
 4. Chain of Responsibility, State, Visitor
 5. SOLID + CQRS + Event Sourcing
-
----
-
-## Notes
-
-- The repository intentionally keeps examples compact to maximize readability.
-- In this codebase, the Singleton package is currently named `singalton` (typo preserved for compatibility with existing tests/imports).
 
 ---
 

@@ -1,10 +1,5 @@
-package org.example.creational.singalton;
+package org.example.creational.singleton;
 
-/**
- * @deprecated use {@code org.example.creational.singleton.Singleton} for new code.
- * This class remains for backward compatibility with existing imports.
- */
-@Deprecated(since = "1.1", forRemoval = false)
 public class Singleton {
     private static Singleton instance;
 
