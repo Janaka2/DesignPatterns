@@ -19,7 +19,7 @@ Package: `src/main/java/org/example/creational`
 - **Singleton** (`singalton` legacy package retained for compatibility)
 - **Factory Method**
 - **Abstract Factory**
-- **Builder**
+- **Builder** (`CheeseBurger`, `VeggieBurger`)
 - **Prototype**
 
 ### 2) Structural patterns

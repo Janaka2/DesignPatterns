@@ -1,10 +1,10 @@
 package org.example.creational.builder;
 
 public abstract class Burger {
-    private String bun;
-    private String patty;
-    private String sauce;
-    private String toppings;
+    private final String bun;
+    private final String patty;
+    private final String sauce;
+    private final String toppings;
 
     public Burger(Builder<?> builder) {
         this.bun = builder.bun;
@@ -53,6 +53,16 @@ public abstract class Burger {
         public T toppings(String toppings) {
             this.toppings = toppings;
             return self();
+        }
+
+        protected void validateRequiredFields() {
+            if (bun == null || bun.isBlank()) {
+                throw new IllegalStateException("Bun is required");
+            }
+
+            if (patty == null || patty.isBlank()) {
+                throw new IllegalStateException("Patty is required");
+            }
         }
 
         protected abstract T self();
