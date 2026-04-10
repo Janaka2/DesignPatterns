@@ -15,6 +15,7 @@ Phase tracking:
 - [Phase 3 — Modern Java implementation variants](docs/phase-3-modern-java-variants.md)
 - [Phase 4 — Cloud-native + observability examples](docs/phase-4-cloud-native-observability.md)
 - [Phase 5 — AI-era additions (high practical value)](docs/phase-5-ai-era-patterns.md)
+- [Phase 6 — Documentation UX for workplace reuse](docs/phase-6-documentation-ux.md)
 
 ---
 
@@ -177,6 +178,16 @@ Package: `src/main/java/org/example/ai`
 | SOLID: LSP | Subtypes must substitute base types safely | Inheritance hierarchies | Requires careful contracts | Shape/domain polymorphism | `ShapeTest` |
 | SOLID: ISP | Split large interfaces into focused ones | Different clients need different capabilities | More interfaces | Printer/scanner capability split | `MultiFunctionPrinterTest` |
 | SOLID: DIP | Depend on abstractions, not concretions | Testable, replaceable dependencies | More wiring/DI setup | Storage abstraction in services | `DependencyInversionTest` |
+
+---
+
+
+## Documentation UX quick links
+
+- **Decision trees + domain guides**: [`docs/phase-6-documentation-ux.md`](docs/phase-6-documentation-ux.md)
+- **Copy-paste pattern starter**: [`templates/pattern-starter/`](templates/pattern-starter/)
+
+Use these assets when deciding what pattern to use and when scaffolding new pattern examples for workplace reuse.
 
 ---
 
