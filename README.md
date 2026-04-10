@@ -131,7 +131,7 @@ src/
 ## How to run
 
 ### Prerequisites
-- **JDK 17+**
+- **JDK 21+**
 - **Maven 3.9+**
 
 ### Run all tests
