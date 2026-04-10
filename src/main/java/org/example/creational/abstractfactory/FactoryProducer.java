@@ -1,12 +1,17 @@
 package org.example.creational.abstractfactory;
 
+import java.util.Locale;
+
 public class FactoryProducer {
     public static AbstractFactory getFactory(String choice) {
-        if ("SHAPE".equalsIgnoreCase(choice)) {
-            return new ShapeFactory();
-        } else if ("COLOR".equalsIgnoreCase(choice)) {
-            return new ColorFactory();
+        if (choice == null) {
+            return null;
         }
-        return null;
+
+        return switch (choice.toUpperCase(Locale.ROOT)) {
+            case "SHAPE" -> new ShapeFactory();
+            case "COLOR" -> new ColorFactory();
+            default -> null;
+        };
     }
 }

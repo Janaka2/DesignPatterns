@@ -1,14 +1,18 @@
 package org.example.creational.factory;
 
+import java.util.Locale;
+
 public class ShapeFactory {
     public Shape getShape(String shapeType) {
-        if ("CIRCLE".equalsIgnoreCase(shapeType)) {
-            return new Circle();
-        } else if ("SQUARE".equalsIgnoreCase(shapeType)) {
-            return new Square();
-        }else if ("RECTANGLE".equalsIgnoreCase(shapeType)) {
-            return new Rectangle();
+        if (shapeType == null) {
+            return null;
         }
-        return null;
+
+        return switch (shapeType.toUpperCase(Locale.ROOT)) {
+            case "CIRCLE" -> new Circle();
+            case "SQUARE" -> new Square();
+            case "RECTANGLE" -> new Rectangle();
+            default -> null;
+        };
     }
 }

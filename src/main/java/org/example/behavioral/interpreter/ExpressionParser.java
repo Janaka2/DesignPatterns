@@ -1,22 +1,25 @@
 package org.example.behavioral.interpreter;
 
-import java.util.Stack;
+import java.util.ArrayDeque;
+import java.util.Deque;
 
 public class ExpressionParser {
     public Expression parse(String expression) {
-        Stack<Expression> stack = new Stack<>();
+        Deque<Expression> stack = new ArrayDeque<>();
 
         for (String token : expression.split(" ")) {
-            if (token.equals("+")) {
-                Expression right = stack.pop();
-                Expression left = stack.pop();
-                stack.push(new Plus(left, right));
-            } else if (token.equals("-")) {
-                Expression right = stack.pop();
-                Expression left = stack.pop();
-                stack.push(new Minus(left, right));
-            } else {
-                stack.push(new Number(Integer.parseInt(token)));
+            switch (token) {
+                case "+" -> {
+                    Expression right = stack.pop();
+                    Expression left = stack.pop();
+                    stack.push(new Plus(left, right));
+                }
+                case "-" -> {
+                    Expression right = stack.pop();
+                    Expression left = stack.pop();
+                    stack.push(new Minus(left, right));
+                }
+                default -> stack.push(new Number(Integer.parseInt(token)));
             }
         }
 
