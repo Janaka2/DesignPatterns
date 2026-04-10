@@ -216,13 +216,36 @@ mvn -X help:effective-settings
 
 ---
 
-## Learning path (suggested)
+## Learning path (industry demand first)
 
-1. Singleton, Factory Method, Builder
-2. Adapter, Decorator, Facade
-3. Strategy, Observer, Command
-4. Chain of Responsibility, State, Visitor
-5. SOLID + CQRS + Event Sourcing
+Priority is based on practical usage frequency in production systems, interview relevance, and long-term value for backend/platform engineers.
+
+1. **SOLID principles (SRP, OCP, LSP, ISP, DIP)**  
+   Foundational for maintainable, testable, and scalable code in almost every Java codebase.
+2. **Strategy**  
+   Extremely common for pricing/routing/business-rule variation and clean replacement of `if/else` chains.
+3. **Factory Method + Abstract Factory**  
+   Widely used for dependency creation, pluggable modules, and framework extension points.
+4. **Builder**  
+   High day-to-day value for complex object creation, immutability, and readable APIs.
+5. **Observer**  
+   Core for event-driven design, domain events, and reactive-style in-process communication.
+6. **Adapter**  
+   Critical in real systems when integrating third-party SDKs, legacy services, and external APIs.
+7. **Decorator**  
+   Frequently used for adding cross-cutting behavior (logging, metrics, retries, security) without changing core classes.
+8. **Facade**  
+   Valuable for simplifying complex subsystems and presenting clean service boundaries.
+9. **Command + Chain of Responsibility**  
+   Important for workflow pipelines, queue/handler orchestration, middleware/filter chains, and policy processing.
+10. **State**  
+    Useful in lifecycle-heavy domains (orders, payments, onboarding, approvals).
+11. **Proxy**  
+    Common in enterprise frameworks (lazy loading, remoting, access control, AOP-like wrapping).
+12. **CQRS + Event Sourcing**  
+    High market value in distributed/event-heavy systems, though applied in more specialized contexts.
+13. **Template Method, Composite, Iterator, Mediator, Memento, Visitor, Bridge, Flyweight, Prototype, Interpreter, Singleton**  
+    Important to recognize and understand; used less frequently directly in modern business applications (or often hidden inside frameworks).
 
 ---
 
