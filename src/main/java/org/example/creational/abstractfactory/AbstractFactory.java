@@ -1,4 +1,7 @@
 package org.example.creational.abstractfactory;
+
+import java.util.Locale;
+
 public interface AbstractFactory {
     Shape getShape(String shapeType);
     Color getColor(String colorType);
@@ -11,14 +14,13 @@ class ShapeFactory implements AbstractFactory {
         if (shapeType == null) {
             return null;
         }
-        if (shapeType.equalsIgnoreCase("CIRCLE")) {
-            return new Circle();
-        } else if (shapeType.equalsIgnoreCase("RECTANGLE")) {
-            return new Rectangle();
-        } else if (shapeType.equalsIgnoreCase("SQUARE")) {
-            return new Square();
-        }
-        return null;
+
+        return switch (shapeType.toUpperCase(Locale.ROOT)) {
+            case "CIRCLE" -> new Circle();
+            case "RECTANGLE" -> new Rectangle();
+            case "SQUARE" -> new Square();
+            default -> null;
+        };
     }
 
     @Override
@@ -39,15 +41,13 @@ class ColorFactory implements AbstractFactory {
         if (colorType == null) {
             return null;
         }
-        if (colorType.equalsIgnoreCase("RED")) {
-            return new Red();
-        } else if (colorType.equalsIgnoreCase("GREEN")) {
-            return new Green();
-        } else if (colorType.equalsIgnoreCase("BLUE")) {
-            return new Blue();
-        }
-        return null;
+
+        return switch (colorType.toUpperCase(Locale.ROOT)) {
+            case "RED" -> new Red();
+            case "GREEN" -> new Green();
+            case "BLUE" -> new Blue();
+            default -> null;
+        };
     }
 }
-
 
