@@ -14,6 +14,7 @@ Phase tracking:
 - [Phase 2 — Expand from GoF to enterprise patterns](docs/phase-2-enterprise-patterns.md)
 - [Phase 3 — Modern Java implementation variants](docs/phase-3-modern-java-variants.md)
 - [Phase 4 — Cloud-native + observability examples](docs/phase-4-cloud-native-observability.md)
+- [Phase 5 — AI-era additions (high practical value)](docs/phase-5-ai-era-patterns.md)
 
 ---
 
@@ -108,6 +109,16 @@ Package: `src/main/java/org/example/cloudnative/observability`
 - **Circuit breaker metrics** (success/failure/rejection counters)
 - **Saga correlation IDs** (trace attributes and correlated execution)
 - **Resilience fault-injection scenarios** (Testcontainers + WireMock)
+
+### 10) AI application patterns
+Package: `src/main/java/org/example/ai`
+
+- **Prompt Builder pattern**
+- **Retrieval pipeline (RAG-lite) orchestration**
+- **Tool/Agent orchestration facade**
+- **Fallback model strategy**
+- **Policy & safety wrappers** (input validation, output filtering, PII masking)
+- **Evaluation harness** (golden set + statistical scoring)
 
 ---
 
