@@ -1,6 +1,7 @@
 package org.example.creational.builder;
+
 public class CheeseBurger extends Burger {
-    private String cheese;
+    private final String cheese;
 
     public CheeseBurger(Builder builder) {
         super(builder);
@@ -26,6 +27,7 @@ public class CheeseBurger extends Burger {
 
         @Override
         public CheeseBurger build() {
+            validateRequiredFields();
             return new CheeseBurger(this);
         }
     }
