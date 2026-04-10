@@ -1,0 +1,45 @@
+version: "3.9"
+
+services:
+  command-observability-demo:
+    image: ghcr.io/janaka2/designpatterns-command-demo:latest
+    environment:
+      OTEL_SERVICE_NAME: command-observability-demo
+      OTEL_EXPORTER_OTLP_ENDPOINT: http://otel-collector:4317
+    ports:
+      - "8088:8080"
+    depends_on:
+      - otel-collector
+
+  resilience-fault-demo:
+    image: ghcr.io/janaka2/designpatterns-resilience-demo:latest
+    environment:
+      UPSTREAM_BASE_URL: http://wiremock:8080
+      OTEL_EXPORTER_OTLP_ENDPOINT: http://otel-collector:4317
+    ports:
+      - "8090:8080"
+    depends_on:
+      - wiremock
+      - otel-collector
+
+  wiremock:
+    image: wiremock/wiremock:3.13.1
+    command: ["--verbose"]
+    ports:
+      - "8089:8080"
+
+  otel-collector:
+    image: otel/opentelemetry-collector:0.122.1
+    command: ["--config=/etc/otelcol/config.yaml"]
+    volumes:
+      - ./otel-collector-config.yaml:/etc/otelcol/config.yaml:ro
+    ports:
+      - "4317:4317"
+      - "4318:4318"
+    depends_on:
+      - jaeger
+
+  jaeger:
+    image: jaegertracing/all-in-one:1.64.0
+    ports:
+      - "16686:16686"
